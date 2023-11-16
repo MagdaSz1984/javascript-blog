@@ -157,3 +157,29 @@ function addClickListenersToTagsInPost() {
 
 addClickListenersToTags();
 addClickListenersToTagsInPost();
+
+function generateAuthors() {
+  /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
+
+  /* START LOOP: for every article */
+  for (let article of articles) {
+    /* find author wrapper */
+    const authorWrapper = article.querySelector(".post-author");
+
+    /* make html variable with empty string */
+    let html = "";
+
+    /* get author from data-author attribute */
+    const articleAuthor = article.getAttribute("data-author");
+
+    /* generate HTML of the link */
+    const linkHTML =
+      'by <a href="#author-' + articleAuthor + '">' + articleAuthor + "</a>";
+
+    /* insert link into author wrapper */
+    authorWrapper.innerHTML = linkHTML;
+  }
+}
+
+generateAuthors();
